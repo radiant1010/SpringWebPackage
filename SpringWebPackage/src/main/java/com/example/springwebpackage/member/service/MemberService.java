@@ -2,6 +2,8 @@ package com.example.springwebpackage.member.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.example.springwebpackage.member.model.dto.MemberVO;
 
 public interface MemberService {
@@ -21,5 +23,12 @@ public interface MemberService {
 	public void updateMember(MemberVO vo);
 
 	public boolean checkPw(String userId, String userPw);
+	
+    // 01_01. 회원 로그인 체크
+    public boolean loginCheck(MemberVO vo, HttpSession session);
+    // 01_02. 회원 로그인 정보
+    public MemberVO viewMember(MemberVO vo);
+    // 02. 회원 로그아웃
+    public void logout(HttpSession session);
 
 }

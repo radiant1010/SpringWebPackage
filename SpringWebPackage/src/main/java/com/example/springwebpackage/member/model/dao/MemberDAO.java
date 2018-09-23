@@ -2,6 +2,8 @@ package com.example.springwebpackage.member.model.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.example.springwebpackage.member.model.dto.MemberVO;
 
 public interface MemberDAO {
@@ -22,4 +24,11 @@ public interface MemberDAO {
 
 	// 비밀번호 체크
 	public boolean checkPw(String userId, String userPw);
+	
+    // 01_01. 회원 로그인 체크
+    public boolean loginCheck(MemberVO vo);
+    // 01_02. 회원 로그인 정보
+    public MemberVO viewMember(MemberVO vo);
+    // 02. 회원 로그아웃
+    public void logout(HttpSession session);
 }

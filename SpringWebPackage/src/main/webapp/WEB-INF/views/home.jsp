@@ -8,10 +8,14 @@
 <html>
 <head>
 <title>Home</title>
+<%@ include file="member/member_header.jsp" %>
 </head>
 <body>
 	<h1>Hello world!</h1>
-	<a href="member/list.do">회원관리</a>
-	<P>The time on the server is ${serverTime}.</P>
+	<input type="button" class="btn btn-primary" value="회원등록" onclick="location.href='${path}/member/write.do'">
+<%@ include file="member/member_menu.jsp" %>
+    <c:if test="${msg == 'success'}">
+    <h2>${sessionScope.userName}(${sessionScope.userId})님 환영합니다.</h2>
+    </c:if>
 </body>
 </html>
