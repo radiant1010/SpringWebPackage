@@ -81,8 +81,8 @@ public class MemberDAOImpl implements MemberDAO {
     }
     // 01_02. 회원 로그인 정보
     @Override
-    public MemberVO viewMember(MemberVO vo) {
-        return sqlSession.selectOne("member.viewMember", vo);
+    public MemberVO loginviewMember(MemberVO vo) {
+        return sqlSession.selectOne("member.loginviewMember", vo);
     }
     // 02. 회원 로그아웃
     @Override

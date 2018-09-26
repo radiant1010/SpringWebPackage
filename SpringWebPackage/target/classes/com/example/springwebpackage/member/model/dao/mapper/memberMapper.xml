@@ -33,12 +33,13 @@
     <!-- 03. 회원정보 상세조회 -->
     <select id="viewMember" resultType="com.example.springwebpackage.member.model.dto.MemberVO">
         SELECT 
-            user_name AS userName,
-            user_id AS userId,
-            user_email AS userEmail,
-            user_regdate AS userRegdate
+          user_id AS userId, 
+          user_name AS userName,
+          user_email AS userEmail,
+          user_regdate AS userRegdate,
+          user_regdate AS userUpdatedate
         FROM tbl_member
-        WHERE user_id = #{userId} AND user_pw = #{userPw}
+        WHERE user_id = #{userId}
     </select>
     
         <!-- 04. 회원정보 수정처리 -->
@@ -63,6 +64,17 @@
     <select id="checkPw" resultType="int">
         SELECT 
             COUNT(*) 
+        FROM tbl_member
+        WHERE user_id = #{userId} AND user_pw = #{userPw}
+    </select>
+   
+    <!--  -->
+    <select id="loginviewMember" resultType="com.example.springwebpackage.member.model.dto.MemberVO">
+        SELECT 
+            user_name AS userName,
+            user_id AS userId,
+            user_email AS userEmail,
+            user_regdate AS userRegdate
         FROM tbl_member
         WHERE user_id = #{userId} AND user_pw = #{userPw}
     </select>

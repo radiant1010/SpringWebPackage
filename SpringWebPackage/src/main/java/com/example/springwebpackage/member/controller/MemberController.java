@@ -140,6 +140,7 @@ public class MemberController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("member/login");
         mav.addObject("msg", "logout");
+        mav.setViewName("home");
         return mav;
     }
 	
