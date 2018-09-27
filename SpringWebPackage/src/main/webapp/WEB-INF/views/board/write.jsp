@@ -37,6 +37,7 @@
 </script>
 </head>
 <body>
+	<!-- member와 board의 경로 통합이 필요하다.  -->
 	<%@ include file="../member/member_menu.jsp"%>
 	<h2>게시글 작성</h2>
 	<form name="form1" method="post" action="${path}/board/insert.do">
@@ -49,7 +50,9 @@
 				placeholder="내용을 입력해주세요"></textarea>
 		</div>
 		<div>
-			이름 <input name="writer" id="writer" placeholder="이름을 입력해주세요">
+		<!-- 작성자의 ID를 작성자의 ID로 나타내주려면 board의 DB와 Member DB를 연결해줘야 한다. -->
+		<!-- 귀찮으니 다음에 하도록 하자. -->
+			이름 <input name="writer" id="writer" value="${dto.userId}">
 		</div>
 		<div style="width: 650px; text-align: center;">
 			<button type="button" id="btnSave">확인</button>

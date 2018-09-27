@@ -2,18 +2,22 @@ package com.example.springwebpackage.board.service;
 
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.springwebpackage.board.model.dao.BoardDAO;
 import com.example.springwebpackage.board.model.dto.BoardVO;
+import com.example.springwebpackage.member.controller.MemberController;
 
 @Service
 public class BoardServiceImpl implements BoardService {
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
-	@Inject
+	@Autowired
 	BoardDAO boardDao;
 
 	// 01. 게시글쓰기
@@ -22,17 +26,6 @@ public class BoardServiceImpl implements BoardService {
 		String title = vo.getTitle();
 		String content = vo.getContent();
 		String writer = vo.getWriter();
-		// *태그문자 처리 (< ==> &lt; > ==> &gt;)
-		// replace(A, B) A를 B로 변경
-		title = title.replace("<", "&lt;");
-		title = title.replace("<", "&gt;");
-		writer = writer.replace("<", "&lt;");
-		writer = writer.replace("<", "&gt;");
-		// *공백문자 처리
-		title = title.replace("  ", "&nbsp;&nbsp;");
-		writer = writer.replace("  ", "&nbsp;&nbsp;");
-		// *줄바꿈 문자처리
-		content = content.replace("\n", "<br>");
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setWriter(writer);
@@ -71,7 +64,7 @@ public class BoardServiceImpl implements BoardService {
 		// 최초로 조회할 경우 세션에 저장된 값이 없기 때문에 if문은 실행X
 		if (session.getAttribute("update_time_" + bno) != null) {
 			// 세션에서 읽어오기
-			update_time = (Long) session.getAttribute("update_time_" + bno);
+			update_time = (Long)session.getAttribute("update_time_" + bno);
 		}
 		// 시스템의 현재시간을 current_time에 저장
 		long current_time = System.currentTimeMillis();

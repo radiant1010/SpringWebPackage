@@ -8,13 +8,17 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.example.springwebpackage.member.controller.MemberController;
 import com.example.springwebpackage.member.model.dto.MemberVO;
 
 // 현재 클래스를 DAO bean으로 등록시킴
 @Repository
 public class MemberDAOImpl implements MemberDAO {
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	// SqlSession 객체를 스프링에서 생성하여 주입시켜준다.
 	// 의존관계 주입(Dependency Injection, DI)

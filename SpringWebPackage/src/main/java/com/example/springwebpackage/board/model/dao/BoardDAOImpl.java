@@ -2,16 +2,20 @@ package com.example.springwebpackage.board.model.dao;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.springwebpackage.board.model.dto.BoardVO;
+import com.example.springwebpackage.member.controller.MemberController;
 
 @Repository // 현재 클래스를 dao bean으로 등록
 public class BoardDAOImpl implements BoardDAO {
-	@Inject
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
+	@Autowired
 	SqlSession SqlSession;
 
 	// 01. 게시글 작성

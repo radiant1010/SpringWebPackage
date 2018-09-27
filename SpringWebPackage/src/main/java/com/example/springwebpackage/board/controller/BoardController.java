@@ -2,11 +2,11 @@ package com.example.springwebpackage.board.controller;
 
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,21 +16,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.springwebpackage.board.model.dto.BoardVO;
 import com.example.springwebpackage.board.service.BoardService;
+import com.example.springwebpackage.member.controller.MemberController;
 
 @Controller    // 현재 클래스를 컨트롤러 빈(bean)으로 등록
 @RequestMapping("/board/*")
 public class BoardController {
     
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
 
     // 의존관계 주입 => BoardServiceImpl 생성
-    // IoC 의존관계 역전
-    @Inject
+    @Autowired
     BoardService boardService;
     
     // 01. 게시글 목록
     @RequestMapping("list.do")
     public ModelAndView list() throws Exception{
+    	
+    	logger.debug("list.do");
+
         List<BoardVO> list = boardService.listAll();
         // ModelAndView - 모델과 뷰
         ModelAndView mav = new ModelAndView();
@@ -46,7 +50,7 @@ public class BoardController {
     public String write(){
     	logger.debug("/member/selectMember.do");
 
-        return "board/write"; // write.jsp로 이동
+        return "board/write";
     }
     
     // 02_02. 게시글 작성처리

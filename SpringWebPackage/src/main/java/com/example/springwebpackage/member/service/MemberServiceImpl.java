@@ -5,14 +5,18 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.example.springwebpackage.member.controller.MemberController;
 import com.example.springwebpackage.member.model.dao.MemberDAOImpl;
 import com.example.springwebpackage.member.model.dto.MemberVO;
 
 // 현재 클래스를 스프링에서 관리하는 service bean으로 등록
 @Service
 public class MemberServiceImpl implements MemberService {
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	// MemberDAOImpl 객체를 스프링에서 생성하여 주입시킴
     @Inject
