@@ -4,12 +4,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인페이지</title>
-<%@ include file="../member/member_header.jsp" %>
+<%@ include file="../layout/header.jsp" %>
 <script>
     $(document).ready(function(){
         $("#btnLogin").click(function(){
-            // 태크.val() : 태그에 입력된 값
-            // 태크.val("값") : 태그의 값을 변경 
             var userId = $("#userId").val();
             var userPw = $("#userPw").val();
             if(userId == ""){
@@ -31,7 +29,6 @@
 </script>
 </head>
 <body>
-<%@ include file="../member/member_menu.jsp" %>
 <h2>로그인</h2>
     <form name="form1" method="post">
         <table border="1" width="400px">

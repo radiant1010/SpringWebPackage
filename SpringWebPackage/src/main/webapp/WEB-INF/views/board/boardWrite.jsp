@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 작성</title>
-<%@ include file="../member/member_header.jsp"%>
+<%@ include file="../layout/header.jsp" %>
 <script>
 	$(document).ready(function() {
 		$("#btnSave").click(function() {
@@ -38,9 +38,8 @@
 </head>
 <body>
 	<!-- member와 board의 경로 통합이 필요하다.  -->
-	<%@ include file="../member/member_menu.jsp"%>
 	<h2>게시글 작성</h2>
-	<form name="form1" method="post" action="${path}/board/insert.do">
+	<form name="form1" method="post" action="${path}/board/boardInsert.do">
 		<div>
 			제목 <input name="title" id="title" size="80" placeholder="제목을 입력해주세요">
 		</div>

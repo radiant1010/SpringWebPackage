@@ -4,18 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 목록</title>
-<%@ include file="../member/member_header.jsp" %>
+<%@ include file="../layout/header.jsp" %>
 <script>
     $(document).ready(function(){
         $("#btnWrite").click(function(){
             // 페이지 주소 변경(이동)
-            location.href = "${path}/board/write.do";
+            location.href = "${path}/board/boardWrite.do";
         });
     });
 </script>
 </head>
 <body>
-<%@ include file="../member/member_menu.jsp" %>
+
 <h2>게시글 목록</h2>
 <button type="button" id="btnWrite">글쓰기</button>
 <table border="1" width="600px">
@@ -26,10 +26,10 @@
         <th>작성일</th>
         <th>조회수</th>
     </tr>
-    <c:forEach var="row" items="${list}">
+    <c:forEach var="row" items="${boardList}">
     <tr>
         <td>${row.bno}</td>
-        <td><a href="${path}/board/view.do?bno=${row.bno}">${row.title}</a></td>
+        <td><a href="${path}/board/boardView.do?bno=${row.bno}">${row.title}</a></td>
         <td>${row.writer}</td>
         <td>
             <!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
@@ -39,5 +39,6 @@
     </tr>    
     </c:forEach>
 </table>
+<%@ include file="../layout/footer.jsp" %>
 </body>
 </html>

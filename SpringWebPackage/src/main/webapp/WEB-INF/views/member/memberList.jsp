@@ -4,10 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원 목록</title>
-<%@ include file="../member/member_header.jsp" %>
 </head>
 <body>
-<%@ include file="../member/member_menu.jsp" %>
     <h2>회원 목록</h2>
 <p>
     <table border="1" width="700px">

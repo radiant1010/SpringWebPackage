@@ -11,4 +11,16 @@
 <!-- 부트스트랩  -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
- 
+<div style="text-align: center;">
+	<c:choose>
+		<c:when test="${sessionScope.userId == null}">
+			<a href="${path}/member/login.do">로그인</a>
+		</c:when>
+		<c:otherwise>
+        ${sessionScope.userName}님이 로그인중입니다.
+        <a href="${path}/member/logout.do">로그아웃</a>
+		</c:otherwise>
+	</c:choose>
+</div>
+
+<hr>

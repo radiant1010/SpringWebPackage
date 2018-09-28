@@ -4,12 +4,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 작성</title>
-<%@ include file="../member/member_header.jsp" %>
+<%@ include file="../layout/header.jsp" %>
 <script>
     $(document).ready(function(){
         $("#btnDelete").click(function(){
             if(confirm("삭제하시겠습니까?")){
-                document.form1.action = "${path}/board/delete.do";
+                document.form1.action = "${path}/board/boardDelete.do";
                 document.form1.submit();
             }
         });
@@ -36,7 +36,7 @@
                 document.form1.writer.focus();
                 return;
             }
-            document.form1.action="${path}/board/update.do"
+            document.form1.action="${path}/board/boardUpdate.do"
             // 폼에 입력한 데이터를 서버로 전송
             document.form1.submit();
         });
@@ -44,7 +44,6 @@
 </script>
 </head>
 <body>
-<%@ include file="../member/member_menu.jsp" %>
 <h2>게시글 보기</h2>
 <form name="form1" method="post">
     <div>        <!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->

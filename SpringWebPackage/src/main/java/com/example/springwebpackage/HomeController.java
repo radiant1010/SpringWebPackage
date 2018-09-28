@@ -23,13 +23,9 @@ public class HomeController {
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
 		String formattedDate = dateFormat.format(date);
-
 		// 모델(서블릿의 request 객체를 대체한 것)
 		model.addAttribute("serverTime", formattedDate);
-
-		// home로 포워딩
 		return "home";
 	}
 }

@@ -20,45 +20,45 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardDAO boardDao;
 
-	// 01. 게시글쓰기
+	// 게시글쓰기
 	@Override
-	public void create(BoardVO vo) throws Exception {
+	public void boardCreate(BoardVO vo) throws Exception {
 		String title = vo.getTitle();
 		String content = vo.getContent();
 		String writer = vo.getWriter();
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setWriter(writer);
-		boardDao.create(vo);
+		boardDao.boardCreate(vo);
 	}
 
-	// 02. 게시글 상세보기
+	// 게시글 상세보기
 	@Override
-	public BoardVO read(int bno) throws Exception {
-		return boardDao.read(bno);
+	public BoardVO boardRead(int bno) throws Exception {
+		return boardDao.boardRead(bno);
 	}
 
-	// 03. 게시글 수정
+	// 게시글 수정
 	@Override
-	public void update(BoardVO vo) throws Exception {
-		boardDao.update(vo);
+	public void boardUpdate(BoardVO vo) throws Exception {
+		boardDao.boardUpdate(vo);
 	}
 
-	// 04. 게시글 삭제
+	// 게시글 삭제
 	@Override
-	public void delete(int bno) throws Exception {
-		boardDao.delete(bno);
+	public void boardDelete(int bno) throws Exception {
+		boardDao.boardDelete(bno);
 	}
 
-	// 05. 게시글 전체 목록
+	// 게시글 전체 목록
 	@Override
-	public List<BoardVO> listAll() throws Exception {
-		return boardDao.listAll();
+	public List<BoardVO> boardListAll() throws Exception {
+		return boardDao.boardListAll();
 	}
 
-	// 06. 게시글 조회수 증가
+	// 게시글 조회수 증가
 	@Override
-	public void increaseViewcnt(int bno, HttpSession session) throws Exception {
+	public void boardCount(int bno, HttpSession session) throws Exception {
 		long update_time = 0;
 		// 세션에 저장된 조회시간 검색
 		// 최초로 조회할 경우 세션에 저장된 값이 없기 때문에 if문은 실행X
@@ -71,7 +71,7 @@ public class BoardServiceImpl implements BoardService {
 		// 일정시간이 경과 후 조회수 증가 처리 24*60*60*1000(24시간)
 		// 시스템현재시간 - 열람시간 > 일정시간(조회수 증가가 가능하도록 지정한 시간)
 		if (current_time - update_time > 5 * 1000) {
-			boardDao.increaseViewcnt(bno);
+			boardDao.boardCount(bno);
 			// 세션에 시간을 저장 : "update_time_"+bno는 다른변수와 중복되지 않게 명명한 것
 			session.setAttribute("update_time_" + bno, current_time);
 

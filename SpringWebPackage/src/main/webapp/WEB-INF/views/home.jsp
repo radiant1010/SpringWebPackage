@@ -8,10 +8,9 @@
 <html>
 <head>
 <title>Home</title>
-<%@ include file="member/member_header.jsp" %>
+<%@ include file="layout/header.jsp" %>
 </head>
 <body>
-<%@ include file="member/member_menu.jsp" %>
 	<h1>Hello world!</h1>
 	<!-- 로그인이 된다면 숨겨지게 바꾸기. -->
 	<input type="button" class="btn btn-primary" value="회원등록" onclick="location.href='${path}/member/write.do'">
@@ -21,7 +20,7 @@
     <!-- 로그인 해야 보이게 -->
     <a href="${path}/member/view.do?userId=${sessionScope.userId}"><input type="button" class="btn btn-primary" value="회원상세정보"></a>
     
-    <a href="${path}/board/list.do"><input type="button" class="btn btn-primary" value="게시판"></a>
+    <a href="${path}/board/boardList.do"><input type="button" class="btn btn-primary" value="게시판"></a>
     
 </body>
 </html>

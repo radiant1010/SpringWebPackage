@@ -23,12 +23,14 @@ public interface MemberService {
 	public void updateMember(MemberVO vo);
 
 	public boolean checkPw(String userId, String userPw);
-	
-    // 01_01. 회원 로그인 체크
-    public boolean loginCheck(MemberVO vo, HttpSession session);
-    // 01_02. 회원 로그인 정보
-    public MemberVO loginviewMember(MemberVO vo);
-    // 02. 회원 로그아웃
-    public void logout(HttpSession session);
+
+	// 회원 로그인 체크
+	public boolean loginCheck(MemberVO vo, HttpSession session);
+
+	// 회원 로그인 정보
+	public MemberVO loginviewMember(MemberVO vo);
+
+	// 회원 로그아웃
+	public void logout(HttpSession session);
 
 }
